@@ -33,11 +33,19 @@
 
 
       function skip(num){
+        if(song >= songs.length && num > 0){
+          song=0;
+        }else if(song <= 0 && num < 0){
+          song = songs.length - 1;
+        }else{  
+          song+=num;
+        }
+
         $("#playbtn").html("Pause");
-        song+=num;
         $("#player").attr('src', songs[song]);
         $("#player").load();
         $("#player").trigger('play');
+        
       }
     });
   </script>
