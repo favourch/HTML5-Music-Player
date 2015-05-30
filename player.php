@@ -18,10 +18,14 @@
 
       audio.appendTo('#controlA'); 
 
-      //get last song played and time position 
-      song = parseInt(localStorage.getItem("currentsong"));
+      //get last song played and time position
+      if (localStorage.currentsong) { 
+        song = parseInt(localStorage.getItem("currentsong"));
+      }
       addSource(audio, songs[song]);
-      $("#player")[0].currentTime = localStorage.getItem("musictime");
+      if (localStorage.musictime) {
+        $("#player")[0].currentTime = localStorage.getItem("musictime");
+      }
 
       $("#playbtn").click(function(){
         if($("#player")[0].paused){
