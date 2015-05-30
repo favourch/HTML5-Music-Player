@@ -58,6 +58,20 @@
         
       }
 
+      $("#volup").click(function(){
+        var vol = $("#player")[0].volume;
+        if(vol < 1){
+          $("#player")[0].volume+=.1;
+        }
+      });
+
+      $("#voldown").click(function(){
+        var vol = $("#player")[0].volume;
+        if(vol > 0){
+          $("#player")[0].volume-=.1;
+        }
+      });
+ 
       function addSource(elem, path) {
         $('<source />').attr('src', path).appendTo(elem);
       }    
@@ -66,10 +80,12 @@
 </head>
 <body>
   <div id="controlA"></div>
-  <div id="controls">
+  <div id="controls" >
     <a href="#" id="playbtn" class="myButton">Play/Pause</a><br>
     <a href="#" id="nextbtn" class="myButton">Next</a><br>
     <a href="#" id="backbtn" class="myButton">Back</a><br>
+    <a href="#" id="voldown" style="width:35%;margin:0px" class="myButton">Volume Down</a>
+    <a href="#" id="volup" style="width:35%;margin:0px" class="myButton">Volume Up</a><br>
   </div>
 </body>
 </html>
