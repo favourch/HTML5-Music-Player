@@ -6,8 +6,19 @@
   <script src="js/jquery.min.js"></script>
   <script src="playlist.js"></script>
   <script>
+    var players=[];
     var song = 0;
+
     $(document).ready(function(){
+       var audio = $('<audio />', {
+        id : 'player',
+        autoPlay : 'autoplay',
+        controls : 'controls'
+      });
+
+      audio.appendTo('#controlA');  
+      addSource(audio, songs[song+1]);
+
       skip(0);
       $("#playbtn").click(function(){
         if($("#player")[0].paused){
@@ -40,22 +51,21 @@
         }else{  
           song+=num;
         }
-
         $("#playbtn").html("Pause");
         $("#player").attr('src', songs[song]);
         $("#player").load();
         $("#player").trigger('play');
         
       }
+
+      function addSource(elem, path) {
+        $('<source />').attr('src', path).appendTo(elem);
+      }    
     });
   </script>
 </head>
 <body>
-
-  <audio controls id="player">
-    <source type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+  <div id="controlA"></div>
   <div id="controls">
     <a href="#" id="playbtn" class="myButton">Play/Pause</a><br>
     <a href="#" id="nextbtn" class="myButton">Next</a><br>
