@@ -16,10 +16,13 @@
         controls : 'controls'
       });
 
-      audio.appendTo('#controlA');  
-      addSource(audio, songs[song+1]);
+      audio.appendTo('#controlA'); 
 
-      skip(0);
+      //get last song played and time position 
+      song = parseInt(localStorage.getItem("currentsong"));
+      addSource(audio, songs[song]);
+      $("#player")[0].currentTime = localStorage.getItem("musictime");
+
       $("#playbtn").click(function(){
         if($("#player")[0].paused){
           $("#playbtn").html("Pause");
@@ -74,7 +77,14 @@
  
       function addSource(elem, path) {
         $('<source />').attr('src', path).appendTo(elem);
-      }    
+      }   
+
+      //keep track of song position
+      setInterval(function(){ 
+        var time=$("#player")[0].currentTime; 
+        localStorage.setItem("musictime", time);
+        localStorage.setItem("currentsong", song);
+      }, 1000); 
     });
   </script>
 </head>
