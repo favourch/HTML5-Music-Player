@@ -88,18 +88,36 @@
         var time=$("#player")[0].currentTime; 
         localStorage.setItem("musictime", time);
         localStorage.setItem("currentsong", song);
-      }, 1000); 
+      }, 1000);
+
+      function hide_wins(show){
+        $(".window").each(function(){
+          $(this).hide();
+        }); 
+
+        show.show();
+      }
+
+      hide_wins($("#controls"));
+
+      $("#addwin").click(function(){hide_wins($("#playenter"));});
     });
   </script>
 </head>
 <body>
   <div id="controlA"></div>
-  <div id="controls" >
+  <div id="controls"  class="window">
     <a href="#" id="playbtn" class="myButton">Play/Pause</a><br>
     <a href="#" id="nextbtn" class="myButton">Next</a><br>
     <a href="#" id="backbtn" class="myButton">Back</a><br>
     <a href="#" id="voldown" style="width:35%;margin:0px" class="myButton">Volume Down</a>
     <a href="#" id="volup" style="width:35%;margin:0px" class="myButton">Volume Up</a><br>
+    <a href="#" id="addwin" class="myButton">Add Songs</a><br>
+  </div>
+
+  <div id="playenter" class="window">
+    <textarea id="list" style="width:80%;height:400px"></textarea><br>
+    <a href="#" id="addlist" class="myButton">Add Songs</a><br>
   </div>
 </body>
 </html>
