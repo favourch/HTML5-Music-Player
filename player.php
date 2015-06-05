@@ -4,10 +4,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="css/buttons.css">
   <script src="js/jquery.min.js"></script>
-  <script src="playlist.js"></script>
+<!--  <script src="playlist.js"></script>-->
   <script>
     var players=[];
     var song = 0;
+    var songs = localStorage.getItem("playlist").split(",");
 
     $(document).ready(function(){
        var audio = $('<audio />', {
@@ -101,6 +102,29 @@
       hide_wins($("#controls"));
 
       $("#addwin").click(function(){hide_wins($("#playenter"));});
+
+      $("#addlist").click(function(){
+        var newlist = $("#list")[0].value.split("\n");
+        songs = songs.concat(newlist);
+        localStorage.setItem("playlist", songs);
+        console.log("adding songs");
+        //console.log(songs);
+        $("#list")[0].value="";
+        hide_wins($("#controls"));
+
+      });
+
+      $("#shuffle").click(function(){shufflelist();});
+      function shufflelist() {
+        var array=songs;
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+      }
     });
   </script>
 </head>
@@ -110,6 +134,7 @@
     <a href="#" id="playbtn" class="myButton">Play/Pause</a><br>
     <a href="#" id="nextbtn" class="myButton">Next</a><br>
     <a href="#" id="backbtn" class="myButton">Back</a><br>
+    <a href="#" id="shuffle" class="myButton">Shuffle</a><br>
     <a href="#" id="voldown" style="width:35%;margin:0px" class="myButton">Volume Down</a>
     <a href="#" id="volup" style="width:35%;margin:0px" class="myButton">Volume Up</a><br>
     <a href="#" id="addwin" class="myButton">Add Songs</a><br>
