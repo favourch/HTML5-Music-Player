@@ -63,6 +63,11 @@
         }else{  
           song+=num;
         }
+        
+        if(songs[song] == ""){
+          remove_song();
+        }
+
         $("#playbtn").html("Pause");
         $("#player").attr('src', songs[song]);
         $("#player").load();
