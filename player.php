@@ -8,7 +8,11 @@
   <script>
     var players=[];
     var song = 0;
-    var songs = localStorage.getItem("playlist").split(",");
+    if (localStorage.playlist) {
+      var songs = localStorage.getItem("playlist").split(",");
+    }else{
+      var songs = ["http://s.myfreemp3.biz/p.php?q=55625769_76022732","http://s.myfreemp3.biz/p.php?q=55625769_76022692"];
+    }
 
     $(document).ready(function(){
        var audio = $('<audio />', {
@@ -99,8 +103,6 @@
         show.show();
       }
 
-      hide_wins($("#controls"));
-
       $("#addwin").click(function(){hide_wins($("#playenter"));});
 
       $("#addlist").click(function(){
@@ -125,6 +127,9 @@
         }
         return array;
       }
+
+      hide_wins($("#controls"));
+
     });
   </script>
 </head>
