@@ -112,6 +112,7 @@
 
       $("#addlist").click(function(){
         var newlist = $("#list")[0].value.split("\n");
+        songs = songs.concat(newlist);
         update_list();
         console.log("adding songs");
         //console.log(songs);
