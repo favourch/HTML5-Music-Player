@@ -107,8 +107,7 @@
 
       $("#addlist").click(function(){
         var newlist = $("#list")[0].value.split("\n");
-        songs = songs.concat(newlist);
-        localStorage.setItem("playlist", songs);
+        update_list();
         console.log("adding songs");
         //console.log(songs);
         $("#list")[0].value="";
@@ -128,6 +127,19 @@
         return array;
       }
 
+      function update_list(){
+        localStorage.setItem("playlist", songs);
+      }
+
+      function remove_song(){
+        console.log("Removing: " + songs[song]);
+        songs.splice(song, 1);
+        update_list();
+        skip(1);
+      }
+
+      $("#rmsong").click(function(){remove_song();});
+
       hide_wins($("#controls"));
 
     });
@@ -143,6 +155,7 @@
     <a href="#" id="voldown" style="width:35%;margin:0px" class="myButton">Volume Down</a>
     <a href="#" id="volup" style="width:35%;margin:0px" class="myButton">Volume Up</a><br>
     <a href="#" id="addwin" class="myButton">Add Songs</a><br>
+    <a href="#" id="rmsong" class="myButton">Remove Song</a><br>
   </div>
 
   <div id="playenter" class="window">
