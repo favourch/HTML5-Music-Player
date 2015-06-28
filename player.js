@@ -100,8 +100,6 @@ $(document).ready(function(){
     show.show();
   }
 
-  $("#addwin").click(function(){hide_wins($("#playenter"));});
-
   $("#addlist").click(function(){
     var newlist = $("#list")[0].value.split("\n");
     songs = songs.concat(newlist);

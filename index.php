@@ -70,11 +70,11 @@
         </div>
         <div class="modal-body">
             <div class="form-group">
-              <textarea class="form-control" rows="5" id="comment"></textarea>
+              <textarea id="list" class="form-control" rows="5" id="comment"></textarea>
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" id="addlist" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
       
