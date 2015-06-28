@@ -38,10 +38,35 @@
 
   <div class="btn-group btn-group-justified">
     <a href="#" id="rmsong" class="btn btn-primary btn-lg">Remove Song<span class="glyphicon glyphicon-minus-sign"></span></a>
-    <a href="#" class="btn btn-primary btn-lg">Add Songs<span class="glyphicon glyphicon-plus-sign"></span></a>
+    <a href="#" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Add Songs<span class="glyphicon glyphicon-plus-sign"></span></a>
   </div>
 
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Song URLs Below</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <textarea class="form-control" rows="5" id="comment"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
+
+
 
 
 <!--github ribon-->
